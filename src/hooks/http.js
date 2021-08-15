@@ -7,11 +7,12 @@ export const useHttp = (url, dependencies) => {
         setIsLoading(true);
         (async () => {
             try {
-            const data = await(await fetch(url, { mode: 'cors' })).json();
-            setFetchedData(data);
-            setIsLoading(false);
+                const data = await(await fetch(url, { mode: 'cors' })).json();
+                setFetchedData(data);
+                setIsLoading(false);
             }
             catch {
+                setIsLoading(false);
                 throw new Error('Failed to fetch')
             }
         
