@@ -10,7 +10,16 @@ const Main = ({setScore, setGlobalScore}) => {
     
     const [isLoading, fetchedData] = useHttp('https://pokeapi.co/api/v2/pokemon?limit=151', []);
     console.log(isLoading)
-    console.log(fetchedData.results[55])
+    const selectedPokemons = fetchedData ? fetchedData.results
+      .slice(0, 5)
+      .map((pokemon, index) => ({
+          name: pokemon.name,
+          img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${index + 1}.png`,
+          id: index + 1 
+      })) : [] ;
+
+    console.log(selectedPokemons);
+    console.log(fetchedData);
 
     return (
         <div id="mainContainer"></div>
