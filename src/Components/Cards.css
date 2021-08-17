@@ -1,0 +1,9 @@
+#cardsContainer {
+    display:flex;
+    flex-direction: row;
+}
+.cardImg {
+    width: 10vw;
+    height: 25vh;
+    cursor: pointer;
+}

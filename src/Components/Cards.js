@@ -1,50 +1,39 @@
-import React, { useEffect } from 'react';
-//custom hook
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useEffect} from 'react';
 import Gameflow from './Gameflow'
-import { useHttp } from '../hooks/http'
+import Pokemons from './Pokemons'
+import uniqid from 'uniqid'
 
 const Cards = () => {
-    const [isLoading, fetchedData] = useHttp('https://pokeapi.co/api/v2/pokemon?limit=386', []);
     const [level, cardCount, randomIndex, turns] = Gameflow();
-    const selectedPokemons = fetchedData ? fetchedData.results
-      .slice(randomIndex, randomIndex + cardCount)
-      .map((pokemon, index) => ({
-          name: pokemon.name,
-          img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${randomIndex+ index + 1}.png`,
-          id: index + 1 
-      })) : [] ;
+    const [pokemons, setPokemons] = useState([])
 
-    const displayPokemons = () => {
-        const pokemons = []
-        for (let i = 0; i < selectedPokemons.length; i += 1) {
-            const { id } = selectedPokemons[i];
-            pokemons.push(
-            <div className="card" key={`card${id}`} onClick={() => console.log('helloWorld')}>
-                <img 
-                className="cardImg"
-                key={`cardImg${id}`}
-                src={selectedPokemons[i].img} 
-                alt={selectedPokemons[i].name}>
-                </img>
-                <p
-                className="cardName"
-                key={`cardName${id}`}
-                value={selectedPokemons[i].name}
-                >
-                {selectedPokemons[i].name}
-                </p>
-            </div>
-            );
+    useEffect(async () => {
+        const pokedata = await(await fetch('https://pokeapi.co/api/v2/pokemon?limit=386', { mode: 'cors' })).json();
+        setPokemons(pokedata ? pokedata.results
+            .slice(randomIndex, randomIndex + cardCount)
+            .map((pokemon, index) => ({
+                name: pokemon.name,
+                img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${randomIndex+ index + 1}.png`,
+                id: uniqid()
+            })) : [])
+    }, [])
+
+    const shufflePokemons = () => {
+        console.log(pokemons)
+        const shuffledPokemons = pokemons
+        for (let i = pokemons.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          const temp = shuffledPokemons[i];
+          shuffledPokemons[i] = shuffledPokemons[j];
+          shuffledPokemons[j] = temp;
         }
-        const shuffledPokemons = pokemons.sort((a, b) => 0.5 - Math.random());
-        return shuffledPokemons || null;
-    }
-
+        // ... para mutar state array y trigger a rerender
+        setPokemons([...shuffledPokemons])
+      }
 
     return (
-        <div id="cardsContainer">
-            {displayPokemons()}
-        </div>
+        <Pokemons pokemons={pokemons} shufflePokemons={shufflePokemons}/>
     )
 }
 
