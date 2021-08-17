@@ -1,4 +1,5 @@
 import React from 'react';
+import './Pokemons.css'
 
 const Pokemons = ({pokemons, shufflePokemons}) => {
     const displayPokemons = () => {
