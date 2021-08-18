@@ -15,6 +15,7 @@ const Cards = () => {
             .map((pokemon, index) => ({
                 name: pokemon.name,
                 img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${randomIndex+ index + 1}.png`,
+                isClicked: false,
                 id: uniqid()
             })) : [])
     }, [])
@@ -31,9 +32,23 @@ const Cards = () => {
         // ... para mutar state array y trigger a rerender
         setPokemons([...shuffledPokemons])
       }
+    const markClick = (id) => {
+        pokemons.map((pokemon) => {
+            if(pokemon.id === id){
+                pokemon.isClicked = true
+                return pokemon
+            }
+            return pokemon
+        })
+        console.log(pokemons)
+    }
+    const handleClick = (id) => {
+        shufflePokemons();
+        markClick(id);
+    }
 
     return (
-        <Pokemons pokemons={pokemons} shufflePokemons={shufflePokemons}/>
+        <Pokemons pokemons={pokemons} handleClick={handleClick}/>
     )
 }
 

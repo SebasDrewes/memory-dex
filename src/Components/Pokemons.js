@@ -1,13 +1,13 @@
 import React from 'react';
 import './Pokemons.css'
 
-const Pokemons = ({pokemons, shufflePokemons}) => {
+const Pokemons = ({pokemons, handleClick}) => {
     const displayPokemons = () => {
         const pokemonsArray = []
         for (let i = 0; i < pokemons.length; i += 1) {
             const { id } = pokemons[i];
             pokemonsArray.push(
-            <div className="card" key={`card${id}`} onClick={shufflePokemons}>
+            <div className="card" key={`card${id}`} onClick={() => handleClick(id)}>
                 <img 
                 className="cardImg"
                 key={`cardImg${id}`}
