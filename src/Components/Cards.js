@@ -5,7 +5,7 @@ import Pokemons from './Pokemons'
 import uniqid from 'uniqid'
 
 const Cards = () => {
-    const [level, cardCount, randomIndex, turns] = Gameflow();
+    const [level, cardCount, randomIndex, turns, checkGameOver, gameOver, nextRound] = Gameflow();
     const [pokemons, setPokemons] = useState([])
 
     useEffect(async () => {
@@ -16,6 +16,7 @@ const Cards = () => {
                 name: pokemon.name,
                 img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${randomIndex+ index + 1}.png`,
                 isClicked: false,
+                doubleClicked: false,
                 id: uniqid()
             })) : [])
     }, [])
@@ -35,8 +36,12 @@ const Cards = () => {
     const markClick = (id) => {
         pokemons.map((pokemon) => {
             if(pokemon.id === id){
+                if(!pokemon.isClicked) {
                 pokemon.isClicked = true
                 return pokemon
+            }else {
+                pokemon.doubleClicked = true
+            }
             }
             return pokemon
         })
@@ -45,6 +50,8 @@ const Cards = () => {
     const handleClick = (id) => {
         shufflePokemons();
         markClick(id);
+        gameOver((checkGameOver(pokemons)))
+        nextRound(pokemons);
     }
 
     return (

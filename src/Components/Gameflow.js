@@ -12,6 +12,20 @@ const Gameflow = () => {
                 setCardCount(cardCount + 1);
             }
         }
-    return [level, cardCount, randomIndex, turns]
+    const checkGameOver = (pokemons) => {
+        return pokemons.some(pokemon => pokemon.doubleClicked)
+    }
+    const gameOver = (condition) => {
+        if (condition) {
+            console.log('gameover!!')
+        }
+    }
+    const nextRound = (pokemons) => {
+        if(pokemons.every(pokemon => pokemon.isClicked)) {
+            setLevel(level + 1)
+            console.log(level)
+        }
+    }
+    return [level, cardCount, randomIndex, turns, checkGameOver, gameOver, nextRound]
 }
 export default Gameflow
