@@ -4,11 +4,13 @@ import Gameflow from './Gameflow'
 import Pokemons from './Pokemons'
 import uniqid from 'uniqid'
 
-const Cards = () => {
-    const [level, cardCount, randomIndex, checkGameOver, gameOver, nextRound] = Gameflow();
+const Cards = ({score, globalScore, level, setScore, setGlobalScore, setLevel}) => {
+    const [randomIndex, shufflePokemons, checkGameOver, gameOver, nextRound, markClick, updateScore] = Gameflow();
     const [pokemons, setPokemons] = useState([])
+    const [cardCount, setCardCount] = useState(4);
 
     useEffect(async () => {
+        console.log('isLoading')
         const pokedata = await(await fetch('https://pokeapi.co/api/v2/pokemon?limit=386', { mode: 'cors' })).json();
         setPokemons(pokedata ? pokedata.results
             .slice(randomIndex, randomIndex + cardCount)
@@ -21,37 +23,12 @@ const Cards = () => {
             })) : [])
     }, [cardCount])
 
-    const shufflePokemons = () => {
-        console.log(pokemons)
-        const shuffledPokemons = pokemons
-        for (let i = pokemons.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          const temp = shuffledPokemons[i];
-          shuffledPokemons[i] = shuffledPokemons[j];
-          shuffledPokemons[j] = temp;
-        }
-        // ... para mutar state array y trigger a rerender
-        setPokemons([...shuffledPokemons])
-      }
-    const markClick = (id) => {
-        pokemons.map((pokemon) => {
-            if(pokemon.id === id){
-                if(!pokemon.isClicked) {
-                pokemon.isClicked = true
-                return pokemon
-            }else {
-                pokemon.doubleClicked = true
-            }
-            }
-            return pokemon
-        })
-        console.log(pokemons)
-    }
     const handleClick = (id) => {
-        shufflePokemons();
-        markClick(id);
-        gameOver((checkGameOver(pokemons)))
-        nextRound(pokemons);
+        shufflePokemons(pokemons, setPokemons);
+        updateScore(score, setScore, globalScore, setGlobalScore)
+        markClick(id, pokemons);
+        gameOver(checkGameOver(pokemons), setLevel, setCardCount);
+        nextRound(pokemons, level, setLevel, cardCount, setCardCount);
     }
 
     return (

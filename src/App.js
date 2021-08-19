@@ -1,21 +1,27 @@
 import {useState} from 'react'
 import './App.css';
 import Header from './Components/Header'
-import Main from './Components/Main'
+import Cards from './Components/Cards'
 
 const App = () => {
   const [score, setScore] = useState(0);
-  const [globalScore, setGlobalScore] = useState(0);
+  const [highestScore, setHighestScore] = useState(0);
+  const [level, setLevel] = useState(1);
 
   return (
     <div className="App">
       <Header 
       score={score} 
-      globalScore={globalScore}
+      globalScore={highestScore}
+      level={level}
       />
-      <Main 
+      <Cards
+      score={score} 
+      globalScore={highestScore}
+      level={level}
       setScore={setScore} 
-      setGlobalScore={setGlobalScore}
+      setGlobalScore={setHighestScore}
+      setLevel={setLevel}
       />
     </div>
   );
