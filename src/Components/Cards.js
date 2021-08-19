@@ -5,7 +5,7 @@ import Pokemons from './Pokemons'
 import uniqid from 'uniqid'
 
 const Cards = () => {
-    const [level, cardCount, randomIndex, turns, checkGameOver, gameOver, nextRound] = Gameflow();
+    const [level, cardCount, randomIndex, checkGameOver, gameOver, nextRound] = Gameflow();
     const [pokemons, setPokemons] = useState([])
 
     useEffect(async () => {
@@ -19,7 +19,7 @@ const Cards = () => {
                 doubleClicked: false,
                 id: uniqid()
             })) : [])
-    }, [])
+    }, [cardCount])
 
     const shufflePokemons = () => {
         console.log(pokemons)

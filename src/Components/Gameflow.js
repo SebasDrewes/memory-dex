@@ -6,12 +6,6 @@ const Gameflow = () => {
     
     const randomIndex = Math.floor(Math.random() * (375 - 0)) + 0;
 
-    const turns = (level) => {
-            setLevel(level + 1)
-            if(cardCount <= 10) {
-                setCardCount(cardCount + 1);
-            }
-        }
     const checkGameOver = (pokemons) => {
         return pokemons.some(pokemon => pokemon.doubleClicked)
     }
@@ -23,9 +17,10 @@ const Gameflow = () => {
     const nextRound = (pokemons) => {
         if(pokemons.every(pokemon => pokemon.isClicked)) {
             setLevel(level + 1)
+            setCardCount(cardCount + 2);
             console.log(level)
         }
     }
-    return [level, cardCount, randomIndex, turns, checkGameOver, gameOver, nextRound]
+    return [level, cardCount, randomIndex, checkGameOver, gameOver, nextRound]
 }
 export default Gameflow
