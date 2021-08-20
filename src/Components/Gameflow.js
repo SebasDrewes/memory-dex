@@ -32,18 +32,21 @@ const Gameflow = () => {
     const checkGameOver = (pokemons) => {
         return pokemons.some(pokemon => pokemon.doubleClicked)
     }
-    const gameOver = (condition, setLevel, setCardCount, setScore, highestScore, 
+    const gameOver = (condition, level, setLevel, setCardCount, setScore, highestScore, 
         setHighestScore, newGameSwitch, setNewGameSwitch) => {
         if (condition) {
             setLevel(1)
             setScore(0)
             setCardCount(4)
             setHighestScore(highestScore)
+            if(level === 1) {
+            // solo forza rerender con newGameSwitch si el nivel es 1
             if(newGameSwitch) {
                 setNewGameSwitch(false)
             } else {
                 setNewGameSwitch(true)
             }
+        }
             console.log('gameover!!')
         }
     }
@@ -51,7 +54,7 @@ const Gameflow = () => {
         if(pokemons.every(pokemon => pokemon.isClicked)) {
             setLevel(level + 1)
             if(cardCount <= 10)
-            setCardCount(cardCount + 2);
+            setCardCount(cardCount + 1);
             console.log(level)
         }
     }

@@ -1,7 +1,15 @@
 import React from 'react';
 import './Pokemons.css'
 
-const Pokemons = ({pokemons, handleClick}) => {
+const Pokemons = ({pokemons, handleClick, setLoading}) => {
+    const isLoaded = (i) => {
+        return pokemons[i].isLoaded = true
+    }
+    const checkIfAllLoaded = () => {
+        if(pokemons.every(pokemon => pokemon.isLoaded)) {
+            setLoading(false)
+        }
+    }
     const displayPokemons = () => {
         const pokemonsArray = []
         for (let i = 0; i < pokemons.length; i += 1) {
@@ -11,7 +19,8 @@ const Pokemons = ({pokemons, handleClick}) => {
                 <img 
                 className="cardImg"
                 key={`cardImg${id}`}
-                src={pokemons[i].img} 
+                src={pokemons[i].img}
+                onLoad={() => {isLoaded(i); checkIfAllLoaded()}}
                 alt={pokemons[i].name}>
                 </img>
                 <p
