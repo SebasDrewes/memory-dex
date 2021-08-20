@@ -32,10 +32,18 @@ const Gameflow = () => {
     const checkGameOver = (pokemons) => {
         return pokemons.some(pokemon => pokemon.doubleClicked)
     }
-    const gameOver = (condition, setLevel, setCardCount) => {
+    const gameOver = (condition, setLevel, setCardCount, setScore, highestScore, 
+        setHighestScore, newGameSwitch, setNewGameSwitch) => {
         if (condition) {
             setLevel(1)
+            setScore(0)
             setCardCount(4)
+            setHighestScore(highestScore)
+            if(newGameSwitch) {
+                setNewGameSwitch(false)
+            } else {
+                setNewGameSwitch(true)
+            }
             console.log('gameover!!')
         }
     }
@@ -47,9 +55,11 @@ const Gameflow = () => {
             console.log(level)
         }
     }
-    const updateScore = (score, setScore, globalScore, setGlobalScore) => {
+    const updateScore = (score, setScore, highestScore, setHighestScore) => {
         setScore(score + 1)
-        setGlobalScore(globalScore + 1)
+        if (score >= highestScore) {
+        setHighestScore(score + 1)
+        }
     }
     return [randomIndex, shufflePokemons, checkGameOver, gameOver, nextRound, markClick, updateScore]
 }

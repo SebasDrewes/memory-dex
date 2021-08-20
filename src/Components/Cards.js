@@ -4,15 +4,18 @@ import Gameflow from './Gameflow'
 import Pokemons from './Pokemons'
 import uniqid from 'uniqid'
 
-const Cards = ({score, globalScore, level, setScore, setGlobalScore, setLevel}) => {
+const Cards = ({score, highestScore, level, setScore, setHighestScore, setLevel}) => {
     const [randomIndex, shufflePokemons, checkGameOver, gameOver, nextRound, markClick, updateScore] = Gameflow();
     const [pokemons, setPokemons] = useState([])
     const [cardCount, setCardCount] = useState(4);
+    //agregado newgameswitch para triggear useEffect al perder primer ronda
+    const [newGameSwitch, setNewGameSwitch] = useState(false)
 
     useEffect(async () => {
         console.log('isLoading')
         const pokedata = await(await fetch('https://pokeapi.co/api/v2/pokemon?limit=386', { mode: 'cors' })).json();
         setPokemons(pokedata ? pokedata.results
+            //slice + map para generar nuevo array de objectos de pokemons seleccionados
             .slice(randomIndex, randomIndex + cardCount)
             .map((pokemon, index) => ({
                 name: pokemon.name,
@@ -21,13 +24,14 @@ const Cards = ({score, globalScore, level, setScore, setGlobalScore, setLevel}) 
                 doubleClicked: false,
                 id: uniqid()
             })) : [])
-    }, [cardCount])
+    }, [level, newGameSwitch]);
 
     const handleClick = (id) => {
         shufflePokemons(pokemons, setPokemons);
-        updateScore(score, setScore, globalScore, setGlobalScore)
+        updateScore(score, setScore, highestScore, setHighestScore)
         markClick(id, pokemons);
-        gameOver(checkGameOver(pokemons), setLevel, setCardCount);
+        gameOver(checkGameOver(pokemons), setLevel, setCardCount, 
+        setScore, highestScore, setHighestScore, newGameSwitch, setNewGameSwitch);
         nextRound(pokemons, level, setLevel, cardCount, setCardCount);
     }
 

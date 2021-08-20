@@ -12,15 +12,15 @@ const App = () => {
     <div className="App">
       <Header 
       score={score} 
-      globalScore={highestScore}
+      highestScore={highestScore}
       level={level}
       />
       <Cards
       score={score} 
-      globalScore={highestScore}
+      highestScore={highestScore}
       level={level}
       setScore={setScore} 
-      setGlobalScore={setHighestScore}
+      setHighestScore={setHighestScore}
       setLevel={setLevel}
       />
     </div>
