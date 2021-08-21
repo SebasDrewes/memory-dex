@@ -32,19 +32,11 @@ const Gameflow = () => {
         return pokemons.some(pokemon => pokemon.doubleClicked)
     }
     const gameOver = (condition, level, setLevel, setCardCount, highestScore, 
-        setHighestScore, newGameSwitch, setNewGameSwitch) => {
+        setHighestScore) => {
         if (condition) {
             setLevel(0)
             setHighestScore(highestScore)
             setCardCount(4)
-            if(level === 1) {
-            // solo forza rerender con newGameSwitch si el nivel es 1
-            if(newGameSwitch) {
-                setNewGameSwitch(false)
-            } else {
-                setNewGameSwitch(true)
-            }
-        }
         }
     }
     const nextRound = (pokemons, level, setLevel, cardCount, setCardCount) => {

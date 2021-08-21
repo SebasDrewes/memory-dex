@@ -11,8 +11,6 @@ const Cards = ({score, highestScore, level, setScore, setHighestScore, setLevel}
     const [pokemons, setPokemons] = useState([])
     const [cardCount, setCardCount] = useState(4);
     const [loading, setLoading] = useState(true);
-    //agregado newgameswitch para triggear useEffect al perder primer ronda
-    const [newGameSwitch, setNewGameSwitch] = useState(false)
 
     useEffect(async () => {
         setLoading(true);
@@ -29,14 +27,14 @@ const Cards = ({score, highestScore, level, setScore, setHighestScore, setLevel}
                 isLoaded: false,
                 id: uniqid()
             })) : [])
-    }}, [level, newGameSwitch]);
+    }}, [level]);
 
     const handleClick = (id) => {
         shufflePokemons(pokemons, setPokemons);
         updateScore(score, setScore, highestScore, setHighestScore)
         markClick(id, pokemons);
         gameOver(checkGameOver(pokemons), level, setLevel, setCardCount,
-        highestScore, setHighestScore, newGameSwitch, setNewGameSwitch);
+        highestScore, setHighestScore);
         nextRound(pokemons, level, setLevel, cardCount, setCardCount);
     }
 
