@@ -1,9 +1,56 @@
+@keyframes grow {
+    0% {
+    transform: scale(.3);
+    }
+    60% {
+        transform: scale(1.1);
+        }
+    100% {
+    transform: scale(1);
+    }
+  }
+  @keyframes growClick {
+    0% {
+        transform: scale(.3);
+        }
+        60% {
+        transform: scale(1.1);
+        }
+        100% {
+        transform: scale(1);
+        }
+  }
 #cardsContainer {
     display:flex;
     flex-direction: row;
 }
-.cardImg {
-    width: 10vw;
-    height: 25vh;
-    cursor: pointer;
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+.cardImg{
+    width: 10em;
+    height: 10em;
+    animation-name: grow;
+    animation-duration: 1s;
+    animation-iteration-count:initial;
+    cursor:pointer;
+    margin: 2vw;
+}
+.cardImgClicked{
+    width: 10em;
+    height: 10em;
+    animation-name: growClick;
+    animation-duration: 1s;
+    animation-iteration-count:initial;
+    cursor:pointer;
+    margin: 2vw;
+}
+.cardImg:hover{
+    transform: scale(1.2);
+}
+.cardImgClicked:hover{
+    transform: scale(1.2);
+}
+
