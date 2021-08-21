@@ -10,9 +10,9 @@ const NewGameScreen = ({level, score, setScore, setLevel}) => {
             return (
                 <div className="loadingScreen">
                     <p>Perdiste!!</p>
-                    <img src={psyduck} alt="psyduck" id="psyduck"></img>
+                    <img src={psyduck} alt="psyduck" id="psyduck" draggable="false"></img>
                     <p>Tu puntaje es {score -1}</p>
-                    <button onClick={newGame}>New Game</button>
+                    <button id="newGame"onClick={newGame}>New Game</button>
                 </div>
             )
         } return null

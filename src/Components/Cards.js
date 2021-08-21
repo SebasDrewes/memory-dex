@@ -23,7 +23,7 @@ const Cards = ({score, highestScore, level, setScore, setHighestScore, setLevel}
             .slice(randomIndex, randomIndex + cardCount)
             .map((pokemon, index) => ({
                 name: pokemon.name,
-                img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${randomIndex+ index + 1}.png`,
+                img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${randomIndex+ index + 1}.png`,
                 isClicked: false,
                 doubleClicked: false,
                 isLoaded: false,

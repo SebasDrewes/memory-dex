@@ -1,4 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 #psyduck {
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
+}
+#newGame{
+    font-family: 'Press Start 2P';
+    background-color: transparent;
+    cursor: pointer;
 }
