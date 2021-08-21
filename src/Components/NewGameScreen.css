@@ -8,4 +8,13 @@
     font-family: 'Press Start 2P';
     background-color: transparent;
     cursor: pointer;
+    font-size: 1em;
+    border-radius: 5px;
+    padding: 5px;
+    color: #6a6778;
+    background-color: rgba(235, 235, 235, 0.897);
+}
+.newGameText{
+    font-size: 1.5em;
+    text-align: center;
 }

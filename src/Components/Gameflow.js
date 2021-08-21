@@ -1,6 +1,6 @@
 const Gameflow = () => {
     
-    const randomIndex = Math.floor(Math.random() * (375 - 0)) + 0;
+    const randomIndex = Math.floor(Math.random() * (370 - 0)) + 0;
 
     const shufflePokemons = (pokemons, setPokemons) => {
         const shuffledPokemons = pokemons
@@ -42,9 +42,8 @@ const Gameflow = () => {
     const nextRound = (pokemons, level, setLevel, cardCount, setCardCount) => {
         if(pokemons.every(pokemon => pokemon.isClicked)) {
             setLevel(level + 1)
-            if(cardCount <= 10)
+            if(cardCount < 15)
             setCardCount(cardCount + 1);
-            console.log(level)
         }
     }
     const updateScore = (score, setScore, highestScore, setHighestScore) => {

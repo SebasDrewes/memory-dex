@@ -1,24 +1,38 @@
 #header {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-content: center;
     align-items: center;
-    background-image: url('./scoreBackground.png');
-    font-size: 1em;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
 }
 #title {
-    margin-left: 8vw;
     font-size: 2.5em;
+    text-align: center;
+}
+#level {
+    font-size: 2.5em;
+    text-align: center;
 }
 #scoreBoard {
     display: flex;
     width: 30vw;
     flex-direction: column;
-    font-size: 1em;
     background-repeat: no-repeat;
     background-size: 100% 100%;
     align-items: center;
+    background-image: url('./scoreBackground.png');
+    font-size: 0.8em;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+@media (max-width: 1100px) {
+    #scoreBoard {
+        display: none
+    }
+    #title {
+        font-size: 1em;
+    }
+    #level {
+        font-size: 1em;
+    }
 }

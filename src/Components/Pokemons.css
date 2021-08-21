@@ -51,16 +51,16 @@
 .cardImg{
     width: 180px;
     height: 180px;
-    background: url('./cardBackground.png');
+    background: url('./cardBackground.png') center;
     border-radius: 5px;
     cursor:pointer;
     padding: 1vw;
 }
 
 .card:hover{
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 .cardClicked:hover{
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 
