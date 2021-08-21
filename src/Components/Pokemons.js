@@ -12,7 +12,8 @@ const Pokemons = ({pokemons, handleClick, setLoading}) => {
         }
     }
     const capitalize = (string) => {
-    return string.replace(string[0], string[0].toUpperCase());
+        let capitalizedString = string
+        return capitalizedString.replace(capitalizedString[0], capitalizedString[0].toUpperCase());
     }
     const animationClick = () => {
         if(animationClass === "card") {

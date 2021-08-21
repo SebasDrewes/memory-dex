@@ -23,6 +23,7 @@
 #cardsContainer {
     display:flex;
     flex-direction: row;
+    margin: 1vw;
 }
 .card {
     display: flex;
@@ -41,7 +42,7 @@
     align-items: center;
     border: 1px solid;
     border-radius: 1em;
-    animation-name: grow;
+    animation-name: growClick;
     animation-duration: 1s;
     animation-iteration-count:initial;
     margin: 1vw;
@@ -50,7 +51,7 @@
     width: 10em;
     height: 10em;
     cursor:pointer;
-    padding: 2vw;
+    padding: 1vw;
     border-bottom: 1px solid;
 }
 
