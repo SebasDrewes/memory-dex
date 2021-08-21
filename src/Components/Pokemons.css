@@ -9,17 +9,17 @@
     transform: scale(1);
     }
   }
-  @keyframes growClick {
+@keyframes growClick {
     0% {
-        transform: scale(.3);
-        }
-        60% {
-        transform: scale(1.1);
-        }
-        100% {
-        transform: scale(1);
-        }
-  }
+    transform: scale(.3);
+    }
+    60% {
+    transform: scale(1.1);
+    }
+    100% {
+    transform: scale(1);
+    }
+}
 #cardsContainer {
     display:flex;
     flex-direction: row;
@@ -48,8 +48,8 @@
     margin: 1vw;
 }
 .cardImg{
-    width: 10em;
-    height: 10em;
+    width: 150px;
+    height: 150px;
     cursor:pointer;
     padding: 1vw;
     border-bottom: 1px solid;
