@@ -16,6 +16,7 @@ const Cards = ({score, highestScore, level, setScore, setHighestScore, setLevel}
 
     useEffect(async () => {
         setLoading(true);
+        if(level !== 0){
         const pokedata = await(await fetch('https://pokeapi.co/api/v2/pokemon?limit=386', { mode: 'cors' })).json();
         setPokemons(pokedata ? pokedata.results
             //slice + map para generar nuevo array de objectos de pokemons seleccionados
@@ -28,7 +29,7 @@ const Cards = ({score, highestScore, level, setScore, setHighestScore, setLevel}
                 isLoaded: false,
                 id: uniqid()
             })) : [])
-    }, [level, newGameSwitch]);
+    }}, [level, newGameSwitch]);
 
     const handleClick = (id) => {
         shufflePokemons(pokemons, setPokemons);
@@ -44,7 +45,7 @@ const Cards = ({score, highestScore, level, setScore, setHighestScore, setLevel}
         <Pokemons pokemons={pokemons} handleClick={handleClick} setLoading={setLoading}/>
         <LoadingScreen loading={loading} level={level}/>
         <NewGameScreen level={level} score={score} setScore={setScore} 
-        setLevel={setLevel} setCardCount={setCardCount}/>
+        setLevel={setLevel}/>
         </div>
     )
 }
