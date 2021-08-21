@@ -2,6 +2,7 @@
 import React, { useState, useEffect} from 'react';
 import Gameflow from './Gameflow'
 import Pokemons from './Pokemons'
+import LoadingScreen from './LoadingScreen'
 import uniqid from 'uniqid'
 
 const Cards = ({score, highestScore, level, setScore, setHighestScore, setLevel}) => {
@@ -38,7 +39,10 @@ const Cards = ({score, highestScore, level, setScore, setHighestScore, setLevel}
     }
 
     return (
+        <div>
         <Pokemons pokemons={pokemons} handleClick={handleClick} setLoading={setLoading}/>
+        <LoadingScreen loading={loading} level={level}/>
+        </div>
     )
 }
 

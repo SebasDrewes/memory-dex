@@ -1,0 +1,32 @@
+@keyframes loading {
+    0% {transform: rotate(-360deg)};
+    100% {transform: rotate(-360deg)};
+}
+
+#loadingScreen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position:absolute;
+    width: 98vw;
+    height: 100%;
+    top:0px;
+    left:0px;
+    background: white;
+}
+#pokeFlex{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+#pokeball {
+    width: 10em;
+    height: 10em;
+    animation-name: loading;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+#loadingText{
+    font-size: 3em;
+    text-align: center;
+}
