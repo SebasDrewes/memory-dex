@@ -3,7 +3,6 @@ const Gameflow = () => {
     const randomIndex = Math.floor(Math.random() * (375 - 0)) + 0;
 
     const shufflePokemons = (pokemons, setPokemons) => {
-        console.log(pokemons)
         const shuffledPokemons = pokemons
         for (let i = pokemons.length - 1; i > 0; i--) {
           const j = Math.floor(Math.random() * (i + 1));
@@ -35,11 +34,11 @@ const Gameflow = () => {
     const gameOver = (condition, level, setLevel, setCardCount, setScore, highestScore, 
         setHighestScore, newGameSwitch, setNewGameSwitch) => {
         if (condition) {
-            setLevel(1)
-            setScore(0)
-            setCardCount(4)
+            setLevel(0)
             setHighestScore(highestScore)
             if(level === 1) {
+            // inicia cardcount solo en nivel 1
+            setCardCount(4)
             // solo forza rerender con newGameSwitch si el nivel es 1
             if(newGameSwitch) {
                 setNewGameSwitch(false)
