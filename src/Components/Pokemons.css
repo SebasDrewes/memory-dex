@@ -23,7 +23,10 @@
 #cardsContainer {
     display:flex;
     flex-direction: row;
-    margin: 1vw;
+    margin: 3vw;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 .card {
     display: flex;

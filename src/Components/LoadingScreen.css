@@ -8,12 +8,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position:absolute;
-    width: 98vw;
-    height: 100%;
+    position: fixed;
+    width: 100%;
+    min-height: 100%;
+    height: auto;
     top:0px;
     left:0px;
-    background: white;
+    background: url('../background.jpg') no-repeat center fixed;     
+    background-size: cover;
 }
 #pokeFlex{
     display:flex;
