@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/memory-dex/static/css/main.6f55b1d1.chunk.css",
+    "main.js": "/memory-dex/static/js/main.71796bc5.chunk.js",
+    "main.js.map": "/memory-dex/static/js/main.71796bc5.chunk.js.map",
+    "runtime-main.js": "/memory-dex/static/js/runtime-main.e9b2715a.js",
+    "runtime-main.js.map": "/memory-dex/static/js/runtime-main.e9b2715a.js.map",
+    "static/js/2.2614ed3c.chunk.js": "/memory-dex/static/js/2.2614ed3c.chunk.js",
+    "static/js/2.2614ed3c.chunk.js.map": "/memory-dex/static/js/2.2614ed3c.chunk.js.map",
+    "index.html": "/memory-dex/index.html",
+    "static/css/main.6f55b1d1.chunk.css.map": "/memory-dex/static/css/main.6f55b1d1.chunk.css.map",
+    "static/js/2.2614ed3c.chunk.js.LICENSE.txt": "/memory-dex/static/js/2.2614ed3c.chunk.js.LICENSE.txt",
+    "static/media/LoadingScreen.css": "/memory-dex/static/media/background.35588919.jpg",
+    "static/media/Pokemons.css": "/memory-dex/static/media/cardBackground.ddfebe8c.png",
+    "static/media/Header.css": "/memory-dex/static/media/scoreBackground.ee948f63.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e9b2715a.js",
+    "static/js/2.2614ed3c.chunk.js",
+    "static/css/main.6f55b1d1.chunk.css",
+    "static/js/main.71796bc5.chunk.js"
+  ]
+}
