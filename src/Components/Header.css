@@ -10,7 +10,7 @@
     text-align: center;
 }
 #level {
-    font-size: 2.5em;
+    font-size: 2em;
     text-align: center;
 }
 #scoreBoard {
@@ -21,6 +21,8 @@
     background-size: 100% 100%;
     align-items: center;
     background-image: url('./scoreBackground.png');
+    background-color: white;
+    border-radius: 1em;
     font-size: 0.8em;
     background-repeat: no-repeat;
     background-size: 100% 100%;

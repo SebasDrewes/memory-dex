@@ -5,6 +5,7 @@ html, body {
     height:100%;
     font-family: 'Press Start 2P';
     color: #6a6778;
-    background: url('./background.jpg') no-repeat center fixed;     
+    background: url('./background.jpg') no-repeat center fixed;
+    background-color: turquoise;     
     background-size: cover;
   }

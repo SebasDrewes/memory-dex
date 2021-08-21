@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect} from 'react';
 import Gameflow from './Gameflow'
 import Pokemons from './Pokemons'
@@ -12,22 +11,26 @@ const Cards = ({score, highestScore, level, setScore, setHighestScore, setLevel}
     const [cardCount, setCardCount] = useState(4);
     const [loading, setLoading] = useState(true);
 
-    useEffect(async () => {
-        setLoading(true);
-        if(level !== 0){
-        const pokedata = await(await fetch('https://pokeapi.co/api/v2/pokemon?limit=386', { mode: 'cors' })).json();
-        setPokemons(pokedata ? pokedata.results
-            //slice + map para generar nuevo array de objectos de pokemons seleccionados
-            .slice(randomIndex, randomIndex + cardCount)
-            .map((pokemon, index) => ({
-                name: pokemon.name,
-                img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${randomIndex+ index + 1}.png`,
-                isClicked: false,
-                doubleClicked: false,
-                isLoaded: false,
-                id: uniqid()
-            })) : [])
-    }}, [level]);
+
+    useEffect(() => {
+        async function fetchData() {
+            setLoading(true);
+            if(level !== 0){
+            const pokedata = await(await fetch('https://pokeapi.co/api/v2/pokemon?limit=386', { mode: 'cors' })).json();
+            setPokemons(pokedata ? pokedata.results
+                //slice + map para generar nuevo array de objectos de pokemons seleccionados
+                .slice(randomIndex, randomIndex + cardCount)
+                .map((pokemon, index) => ({
+                    name: pokemon.name,
+                    img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${randomIndex+ index + 1}.png`,
+                    isClicked: false,
+                    doubleClicked: false,
+                    isLoaded: false,
+                    id: uniqid()
+                })) : [])}};
+        fetchData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [level]);
 
     const handleClick = (id) => {
         shufflePokemons(pokemons, setPokemons);
