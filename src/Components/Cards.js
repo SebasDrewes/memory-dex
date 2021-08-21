@@ -34,8 +34,8 @@ const Cards = ({score, highestScore, level, setScore, setHighestScore, setLevel}
         shufflePokemons(pokemons, setPokemons);
         updateScore(score, setScore, highestScore, setHighestScore)
         markClick(id, pokemons);
-        gameOver(checkGameOver(pokemons), level, setLevel, setCardCount, 
-        setScore, highestScore, setHighestScore, newGameSwitch, setNewGameSwitch);
+        gameOver(checkGameOver(pokemons), level, setLevel, setCardCount,
+        highestScore, setHighestScore, newGameSwitch, setNewGameSwitch);
         nextRound(pokemons, level, setLevel, cardCount, setCardCount);
     }
 
@@ -43,7 +43,8 @@ const Cards = ({score, highestScore, level, setScore, setHighestScore, setLevel}
         <div>
         <Pokemons pokemons={pokemons} handleClick={handleClick} setLoading={setLoading}/>
         <LoadingScreen loading={loading} level={level}/>
-        <NewGameScreen level={level} score={score} setScore={setScore} setLevel={setLevel}/>
+        <NewGameScreen level={level} score={score} setScore={setScore} 
+        setLevel={setLevel} setCardCount={setCardCount}/>
         </div>
     )
 }

@@ -1,12 +1,14 @@
 import psyduck from './psyduck.png';
 import './NewGameScreen.css';
 
-const NewGameScreen = ({level, score, setScore, setLevel}) => {
+const NewGameScreen = ({level, score, setScore, setLevel, setCardCount}) => {
     const newGame = () => {
         setLevel(1)
         setScore(0)
+        setCardCount(4)
     }
         if (level === 0) {
+            setCardCount(0)
             return (
                 <div className="loadingScreen">
                     <p>Perdiste!!</p>
