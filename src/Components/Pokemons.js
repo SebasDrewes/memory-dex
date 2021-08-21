@@ -2,7 +2,7 @@ import React, {useState}from 'react';
 import './Pokemons.css'
 
 const Pokemons = ({pokemons, handleClick, setLoading}) => {
-    const [animationClass, setAnimationClass] = useState("cardImg")
+    const [animationClass, setAnimationClass] = useState("card")
     const isLoaded = (i) => {
         return pokemons[i].isLoaded = true
     }
@@ -15,10 +15,10 @@ const Pokemons = ({pokemons, handleClick, setLoading}) => {
     return string.replace(string[0], string[0].toUpperCase());
     }
     const animationClick = () => {
-        if(animationClass === "cardImg") {
-            setAnimationClass("cardImgClicked")
+        if(animationClass === "card") {
+            setAnimationClass("cardClicked")
         } else {
-            setAnimationClass("cardImg")
+            setAnimationClass("card")
         }
         }
 
@@ -27,9 +27,9 @@ const Pokemons = ({pokemons, handleClick, setLoading}) => {
         for (let i = 0; i < pokemons.length; i += 1) {
             const { id } = pokemons[i];
             pokemonsArray.push(
-            <div className="card" key={`card${id}`} onClick={() => {handleClick(id); animationClick()}}>
+            <div className={animationClass} key={`card${id}`} onClick={() => {handleClick(id); animationClick()}}>
                 <img 
-                className={animationClass}
+                className="cardImg"
                 key={`cardImg${id}`}
                 src={pokemons[i].img}
                 draggable="false"
