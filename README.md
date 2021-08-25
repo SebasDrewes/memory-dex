@@ -5,6 +5,6 @@ Juego de memoria desarrollado con **React**
 
 Suma puntos clickeando Pokemons, pero no clickees al mismo más de una vez!
 
-Haciendo uso de React Hooks (useState & useRef) se extrae informacion de la API PokeApi, guardando los datos en state.
+Haciendo uso de React Hooks (useState & useEffect) se extrae informacion de la API PokeApi, guardando los datos en state.
 
 Probalo! https://sebasdrewes.github.io/memory-dex/
