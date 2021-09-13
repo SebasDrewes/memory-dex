@@ -21,8 +21,7 @@ const Pokemons = ({pokemons, handleClick, setLoading}) => {
         } else {
             setAnimationClass("card")
         }
-        }
-
+    }
     const displayPokemons = () => {
         const pokemonsArray = []
         for (let i = 0; i < pokemons.length; i += 1) {
